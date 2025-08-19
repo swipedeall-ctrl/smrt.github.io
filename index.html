@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Earn Daily</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .header {
+      background-color: #00aaff;
+      color: white;
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .timer {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .main h1 {
+      color: #00ff00;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .subtext {
+      color: #b366ff;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .box {
+      background-color: yellow;
+      color: black;
+      font-size: 36px;
+      width: 80px;
+      margin: 10px auto;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .join-fast {
+      color: red;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .features {
+      text-align: left;
+      display: inline-block;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .subscribe-btn {
+      background-color: red;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .subscribe-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+
+    .limited-spots {
+      color: yellow;
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .ads-manager-btn {
+      margin-top: 20px;
+      background-color: green;
+      color: white;
+      padding: 10px 25px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Popup */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .popup-content {
+      background: white;
+      color: black;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+      width: 80%;
+      max-width: 300px;
+    }
+
+    .popup-content h2 {
+      margin-top: 0;
+    }
+
+    .popup-content a {
+      display: inline-block;
+      background-color: #0088cc;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px; right: 10px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 25px; height: 25px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">🚀 JOIN OUR TELEGRAM CHANNEL AND START EARNING JOURNEY 💸</div>
+
+  <!-- 24 hours countdown timer -->
+  <div class="timer" id="countdown-timer">⏰ 24:00:00</div>
+
+  <div class="main">
+    <h1>EARN DAILY 1000 – 10000</h1>
+    <div class="subtext">Guaranteed returns | Limited Offer</div>
+
+    <!-- Yellow box 1-minute timer -->
+    <div class="box" id="minute-timer">01:00</div>
+
+    <div class="join-fast">Click here to join fast</div>
+
+    <div class="features">
+      ✅ Real Earning Proofs <br />
+      ✅ Trusted by 5000+ Members <br />
+      ✅ Instant Daily Alerts
+    </div>
+
+    <!-- Subscribe button with Telegram icon and link placeholder -->
+    <div>
+      <button class="subscribe-btn" onclick="window.open('add-your-telegram-link', '_blank')">
+        <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" >
+          <path d="M120 0C53.7 0 0 53.7 0 120s53.7 120 120 120 120-53.7 120-120S186.3 0 120 0zm56.5 82.9l-23.7 112.6c-1.8 7.9-6.5 9.9-13.1 6.1l-36.3-26.8-17.5 16.8c-1.9 1.9-3.5 3.5-7.2 3.5l2.6-36.5 66.5-60c2.9-2.6-.6-4.1-4.5-1.5l-82.3 51.8-35.4-11c-7.7-2.4-7.8-7.7 1.6-11.4l136.1-52.5c6.3-2.4 11.8 1.5 9.8 11.1z"/>
+        </svg>
+        SUBSCRIBE FOR FREE →
+      </button>
+    </div>
+
+    <!-- Slot counter -->
+    <div class="limited-spots">⚡ Only <span id="spots-left">60</span> spots left today!</div>
+
+    <div>
+      <button class="ads-manager-btn">📧 Ads Manager</button>
+    </div>
+
+    <div style="margin-top: 15px; color: #aaa;">
+      Ads Manager – Contact for Promotions
+    </div>
+  </div>
+
+  <!-- Popup -->
+  <div class="popup" id="telegramPopup">
+    <div class="popup-content">
+      <button class="close-btn" onclick="closePopup()">×</button>
+      <h2>Join Our Telegram!</h2>
+      <p>Start earning today by joining our Telegram channel.</p>
+      <a href="add-your-telegram-link" target="_blank">Join Now</a>
+    </div>
+  </div>
+
+  <script>
+    // 24-hour countdown timer (in seconds)
+    let countdown24h = 24 * 60 * 60; // 86400 seconds
+    const countdownEl = document.getElementById("countdown-timer");
+
+    const countdownInterval = setInterval(() => {
+      if (countdown24h < 0) {
+        clearInterval(countdownInterval);
+        countdownEl.innerText = "⏰ 00:00:00";
+        return;
+      }
+
+      let hrs = Math.floor(countdown24h / 3600);
+      let mins = Math.floor((countdown24h % 3600) / 60);
+      let secs = countdown24h % 60;
+
+      countdownEl.innerText = `⏰ ${String(hrs).padStart(2, "0")}:${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+
+      countdown24h--;
+    }, 1000);
+
+    // 1-minute countdown timer for yellow box (in seconds)
+    let minuteTimer = 60;
+    const minuteTimerEl = document.getElementById("minute-timer");
+
+    const minuteInterval = setInterval(() => {
+      if (minuteTimer < 0) {
+        clearInterval(minuteInterval);
+        minuteTimerEl.innerText = "00:00";
+        return;
+      }
+
+      let mins = Math.floor(minuteTimer / 60);
+      let secs = minuteTimer % 60;
+
+      minuteTimerEl.innerText = `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+
+      minuteTimer--;
+    }, 1000);
+
+    // Slot counter starting from 60, decreases every 10 seconds
+    let slotCount = 60;
+    const spotsLeftEl = document.getElementById("spots-left");
+
+    const slotInterval = setInterval(() => {
+      if (slotCount > 0) {
+        slotCount--;
+        spotsLeftEl.innerText = slotCount;
+      } else {
+        clearInterval(slotInterval);
+      }
+    }, 10000); // every 10 seconds
+
+    // Show popup after 5 seconds
+    setTimeout(() => {
+      document.getElementById("telegramPopup").style.display = "flex";
+    }, 5000);
+
+    function closePopup() {
+      document.getElementById("telegramPopup").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
